@@ -1,0 +1,39 @@
+.filters__age {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.filters__input {
+  padding: 3px;
+  margin: 2px;
+}
+
+.age {
+  max-width: 130px;
+}
+
+.filters__block {
+  margin: 2px;
+  padding: 2px;
+}
+
+.filters {
+    margin-left: 11px;
+    margin-top: 20px;
+    max-height: 400px;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    border: 1px solid rgb(209, 209, 209);
+    width:100%;
+}
+
+.filters__button {
+    width:180px;
+    margin-left: 5px;
+    height:30px;
+}
