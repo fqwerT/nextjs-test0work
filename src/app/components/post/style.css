@@ -1,0 +1,16 @@
+.card {
+     margin: 5px;
+     max-width: 200px;
+     max-height: 100px;
+     border: 1px solid aquamarine;
+     padding: 10px;
+     height:200px
+}
+
+.card p {
+    max-height: 100px;
+    overflow: hidden;
+    text-align: left;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}

@@ -13,35 +13,39 @@ export const Filters: React.FC = ({}): React.JSX.Element => {
   const dispatch = useAppDispatch();
   const filteredData = useAppSelector((state) => state.users.dataToChange);
   return (
-    <article className="filters">
-      <section className="filters__block">
-        <input
-          onChange={(e) => setAgeFrom(e.target.value)}
-          placeholder="возраст от"
-          className="filters__input age"
-        />
-        <input
-          onChange={(e) => setAgeTo(e.target.value)}
-          placeholder="возраст до"
-          className="filters__input age"
-        />
-      </section>
-      {
+    <>
+      <article className="filters">
         <section className="filters__block">
           <input
-            onChange={(e) => dispatch(filterByname({ value: e.target.value }))}
-            placeholder="имя"
-            className="filters__input"
+            onChange={(e) => setAgeFrom(e.target.value)}
+            placeholder="возраст от"
+            className="filters__input age"
+          />
+          <input
+            onChange={(e) => setAgeTo(e.target.value)}
+            placeholder="возраст до"
+            className="filters__input age"
           />
         </section>
-      }
-      <button
-        onClick={() => dispatch(filterUsersAge({ from: ageFrom, to: ageTo }))}
-        className="filters__button"
-      >
-        Применить
-      </button>
+        {
+          <section className="filters__block">
+            <input
+              onChange={(e) =>
+                dispatch(filterByname({ value: e.target.value }))
+              }
+              placeholder="имя"
+              className="filters__input"
+            />
+          </section>
+        }
+        <button
+          onClick={() => dispatch(filterUsersAge({ from: ageFrom, to: ageTo }))}
+          className="filters__button"
+        >
+          Применить
+        </button>
+      </article>
       {filteredData && <FilterResult />}
-    </article>
+    </>
   );
 };

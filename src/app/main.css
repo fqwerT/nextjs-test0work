@@ -1,9 +1,11 @@
 .app {
     display: flex;
-    justify-content: center;
+    justify-content: space-between;
     align-items: center;
     width: 100%;
     height:100%;
+    flex-wrap: wrap;
+    
 }
 
 .app__container {

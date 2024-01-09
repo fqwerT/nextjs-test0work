@@ -1,0 +1,21 @@
+.header {
+    width:100%;
+    height:60px;
+    background-color: aquamarine;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-bottom-left-radius: 20px;
+    border-bottom-right-radius: 20px;
+}
+
+.hedaer__routes {
+    width:20%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    text-transform: uppercase;
+    font-size: 20px;
+    letter-spacing: 1px;
+
+}
