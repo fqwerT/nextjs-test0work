@@ -1,17 +1,14 @@
 "use client";
 
 import { FilterResult } from "../filterResult/filterResult";
-import { useState, useMemo, useCallback } from "react";
+import { useEffect, useState, useCallback } from "react";
 import { useAppDispatch, useAppSelector } from "@/store.ts/store";
 import { filterByname } from "@/store.ts/reducers/userReducers";
 
 import "./style.css";
 
 export const Filters: React.FC = ({}): React.JSX.Element => {
-  const [ageFrom, setAgeFrom] = useState<string | null>(null);
-  const [ageTo, setAgeTo] = useState<string | null>(null);
   const dispatch = useAppDispatch();
-  const filteredData = useAppSelector((state) => state.users.dataToChange);
   return (
     <>
       <article className="filters">
@@ -30,9 +27,7 @@ export const Filters: React.FC = ({}): React.JSX.Element => {
         {
           <section className="filters__block">
             <input
-              onChange={(e) =>
-                dispatch(filterByname({ value: e.target.value }))
-              }
+              onChange={(e) => dispatch(filterByname(e.target.value))}
               placeholder="имя"
               className="filters__input"
             />
@@ -45,7 +40,6 @@ export const Filters: React.FC = ({}): React.JSX.Element => {
           Применить
         </button> */}
       </article>
-      {filteredData && <FilterResult />}
     </>
   );
 };

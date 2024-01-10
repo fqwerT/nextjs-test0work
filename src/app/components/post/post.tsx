@@ -13,7 +13,7 @@ export const Post: React.FC<PostProps> = ({ title, id, body }) => {
     <article id={String(id)} className="card">
       <h5>{title}</h5>
       <p>{body}</p>
-      <Link href={`/post/${id}`}>подробнее...</Link>
+      <Link href={`/post/${id}`} style={{color:'lightblue'}}>подробнее...</Link>
     </article>
   );
 };

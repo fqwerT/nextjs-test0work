@@ -1,12 +1,13 @@
-import { UsersProps } from "@/interface/user";
+import { UsersProps } from "@/types/user";
 import { createSlice } from "@reduxjs/toolkit";
 import type { PayloadAction } from "@reduxjs/toolkit";
 import { RootState } from "../store";
 
 // Define a type for the slice state
+type Users = null | UsersProps[] | undefined;
 interface userState {
-  usersData: any;
-  dataToChange: null | UsersProps[];
+  usersData: Users;
+  dataToChange: Users;
 }
 
 // Define the initial state using that type
@@ -17,25 +18,17 @@ const initialState: userState = {
 
 export const usersSlice = createSlice({
   name: "counter",
-  // `createSlice` will infer the state type from the `initialState` argument
   initialState,
   reducers: {
-    // filterUsersAge: (state, action) => {
-    //   const { from, to } = action.payload;
-    //   state.dataToChange = state.usersData
-    //     .filter((item: any) => item.age > from)
-    //     .filter((item: any) => item.age < to);
-    // },
     setUsers: (state, action) => {
       state.usersData = action.payload;
+      state.dataToChange = action.payload;
     },
     filterByname: (state, action) => {
-      const { value } = action.payload;
-      if (state.usersData) {
-        state.dataToChange = state.usersData.filter(
-          (item: any) => item.name === value
-        );
-      } 
+      //@ts-ignore
+      state.usersData = state.dataToChange?.filter((item) => {
+        return item.name.toLowerCase().includes(action.payload);
+      });
     },
   },
 });

@@ -13,3 +13,9 @@ export type UserListItemProps = Pick<
   UsersProps,
   "name" | "username" | "phone" | "address" | 'id'
 >;
+export type PostsProps = {
+  userId: number;
+  id: number;
+  title: string;
+  body: string;
+}

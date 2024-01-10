@@ -1,35 +1,29 @@
 "use client";
-import { useState, useEffect } from "react";
+import { useEffect } from "react";
 import "./main.css";
 import { dataFetch } from "./utils/dataFetch";
 import { Post } from "./components/post/post";
+import { useAppSelector, useAppDispatch } from "@/store.ts/store";
+import { shallowEqual } from "react-redux";
+import { setPosts } from "@/store.ts/reducers/postsReducer";
 
-interface PostsProps {
-  userId: number;
-  id: number;
-  title: string;
-  body: string;
-}
 export default function Home() {
-  const [posts, setPosts] = useState<null | PostsProps[]>(null);
+  const posts = useAppSelector((state) => state.posts.usersPosts, shallowEqual);
+  const dispatch = useAppDispatch();
 
   useEffect(() => {
-    if (posts === null) {
-      const fetchData = async () => {
-        const response = await dataFetch({
-          url: "https://jsonplaceholder.typicode.com/posts",
-          dispatch:null,
-          action:null,
-          type: "request",
-          revalidate: { status: false, delay: 0 },
-        });
-        setPosts(response);
-      };
-      fetchData();
+    if (!posts) {
+      dataFetch({
+        url: "https://jsonplaceholder.typicode.com/posts?limit=5",
+        dispatch: dispatch,
+        action: setPosts,
+        type: "set state",
+        revalidate: { status: false, delay: 0 },
+      });
     }
   }, [posts]);
 
-  console.log('render')
+  console.log("render");
   return (
     <div className="app">
       {posts ? (
