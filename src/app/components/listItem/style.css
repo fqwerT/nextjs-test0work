@@ -1,0 +1,20 @@
+.list__box__item {
+    display: flex;
+    cursor: pointer;
+  
+    width: 100%;
+    justify-content: space-between;
+    align-items: center;
+    text-align: center;
+    list-style: none;
+    border-bottom: 1px solid #00000042;
+    padding: 8px;
+  }
+  .list__box__item:hover {
+    background-color: #dddddd;
+  }
+  .item__block {
+    width: 120px;
+    text-align: center;
+  }
+  

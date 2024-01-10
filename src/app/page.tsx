@@ -16,15 +16,20 @@ export default function Home() {
   useEffect(() => {
     if (posts === null) {
       const fetchData = async () => {
-        const response = await dataFetch(
-          "https://jsonplaceholder.typicode.com/posts"
-        );
+        const response = await dataFetch({
+          url: "https://jsonplaceholder.typicode.com/posts",
+          dispatch:null,
+          action:null,
+          type: "request",
+          revalidate: { status: false, delay: 0 },
+        });
         setPosts(response);
       };
       fetchData();
     }
   }, [posts]);
 
+  console.log('render')
   return (
     <div className="app">
       {posts ? (
@@ -34,7 +39,6 @@ export default function Home() {
             title={item.title}
             id={item.id}
             body={item.body}
-            
           />
         ))
       ) : (

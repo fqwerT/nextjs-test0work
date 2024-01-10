@@ -3,7 +3,7 @@
 import { FilterResult } from "../filterResult/filterResult";
 import { useState, useMemo, useCallback } from "react";
 import { useAppDispatch, useAppSelector } from "@/store.ts/store";
-import { filterUsersAge, filterByname } from "@/store.ts/reducers/userReducers";
+import { filterByname } from "@/store.ts/reducers/userReducers";
 
 import "./style.css";
 
@@ -15,7 +15,7 @@ export const Filters: React.FC = ({}): React.JSX.Element => {
   return (
     <>
       <article className="filters">
-        <section className="filters__block">
+        {/* <section className="filters__block">
           <input
             onChange={(e) => setAgeFrom(e.target.value)}
             placeholder="возраст от"
@@ -26,7 +26,7 @@ export const Filters: React.FC = ({}): React.JSX.Element => {
             placeholder="возраст до"
             className="filters__input age"
           />
-        </section>
+        </section> */}
         {
           <section className="filters__block">
             <input
@@ -38,12 +38,12 @@ export const Filters: React.FC = ({}): React.JSX.Element => {
             />
           </section>
         }
-        <button
+        {/* <button
           onClick={() => dispatch(filterUsersAge({ from: ageFrom, to: ageTo }))}
           className="filters__button"
         >
           Применить
-        </button>
+        </button> */}
       </article>
       {filteredData && <FilterResult />}
     </>
